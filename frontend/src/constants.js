@@ -1,0 +1,17 @@
+export const BUSINESS_TYPES = [
+  'Restaurants', 'Cafes & Coffee Shops', 'Hotels & Resorts', 'Bakeries',
+  'Salons & Beauty Parlours', 'Spas & Wellness Centers', 'Gyms & Fitness Centers',
+  'Yoga Studios', 'Clinics & Hospitals', 'Dental Clinics', 'Pharmacies',
+  'Eye Care Centers', 'Physiotherapy Centers',
+  'Clothing & Apparel Stores', 'Jewellery Shops', 'Electronics Stores',
+  'Furniture Showrooms', 'Mobile & Phone Repair',
+  'Car Showrooms', 'Auto Repair & Garages', 'Two Wheeler Dealers',
+  'Real Estate Agencies', 'Architects & Interior Designers',
+  'CA & Tax Consultants', 'Law Firms', 'Coaching Centers & Tutors',
+  'Schools & Colleges', 'Event Planners & Caterers',
+  'Photographers & Studios', 'Printing & Packaging',
+  'Hardware & Construction', 'Plumbers & Electricians',
+  'Travel Agencies & Tour Operators', 'Pest Control Services',
+  'Cleaning & Housekeeping', 'Security Agencies',
+  'Digital Marketing Agencies', 'IT & Software Companies',
+]

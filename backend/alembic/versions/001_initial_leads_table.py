@@ -18,18 +18,8 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    # Lead status enum
-    lead_status = postgresql.ENUM(
-        "new", "analyzing", "analyzed", "scored", "personalized", "contacted", "converted", "rejected",
-        name="leadstatus",
-    )
-    lead_status.create(op.get_bind(), checkfirst=True)
-
-    website_quality = postgresql.ENUM(
-        "none", "poor", "average", "good", "excellent",
-        name="websitequality",
-    )
-    website_quality.create(op.get_bind(), checkfirst=True)
+    op.execute("CREATE TYPE IF NOT EXISTS leadstatus AS ENUM ('new', 'analyzing', 'analyzed', 'scored', 'personalized', 'contacted', 'converted', 'rejected')")
+    op.execute("CREATE TYPE IF NOT EXISTS websitequality AS ENUM ('none', 'poor', 'average', 'good', 'excellent')")
 
     op.create_table(
         "leads",

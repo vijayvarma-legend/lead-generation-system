@@ -18,8 +18,18 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    op.execute("CREATE TYPE IF NOT EXISTS leadstatus AS ENUM ('new', 'analyzing', 'analyzed', 'scored', 'personalized', 'contacted', 'converted', 'rejected')")
-    op.execute("CREATE TYPE IF NOT EXISTS websitequality AS ENUM ('none', 'poor', 'average', 'good', 'excellent')")
+    op.execute("""
+        DO $$ BEGIN
+            CREATE TYPE leadstatus AS ENUM ('new', 'analyzing', 'analyzed', 'scored', 'personalized', 'contacted', 'converted', 'rejected');
+        EXCEPTION WHEN duplicate_object THEN NULL;
+        END $$
+    """)
+    op.execute("""
+        DO $$ BEGIN
+            CREATE TYPE websitequality AS ENUM ('none', 'poor', 'average', 'good', 'excellent');
+        EXCEPTION WHEN duplicate_object THEN NULL;
+        END $$
+    """)
 
     op.create_table(
         "leads",
